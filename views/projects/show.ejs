@@ -1,0 +1,45 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="card mb-3">
+      <div class="card-header">
+        <h2><%= project.projectName %></h2>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Description</h5>
+        <p class="card-text"><%= project.description %></p>
+        
+        <h5 class="card-title">Status</h5>
+        <p class="card-text"><span class="badge bg-primary"><%= project.status %></span></p>
+        
+        <h5 class="card-title">Deadline</h5>
+        <p class="card-text"><%= project.deadline.toLocaleDateString() %></p>
+        
+        <h5 class="card-title">Team Members</h5>
+        <ul class="list-group mb-3">
+          <% project.teamMembers.split(',').forEach(member => { %>
+            <li class="list-group-item"><%= member.trim() %></li>
+          <% }) %>
+        </ul>
+        
+        <h5 class="card-title">Created By</h5>
+        <p class="card-text"><%= project.creator ? project.creator.fullName : 'Unknown' %></p>
+        
+        <h5 class="card-title">Created On</h5>
+        <p class="card-text"><%= project.createdAt.toLocaleDateString() %></p>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-between">
+          <a href="/projects/<%= project._id %>/edit" class="btn btn-info">Edit</a>
+          <form action="/projects/<%= project._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center">
+      <a href="/projects" class="btn btn-secondary">Back to All Projects</a>
+    </div>
+  </div>
+</div>

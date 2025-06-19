@@ -1,0 +1,60 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="card shadow">
+      <div class="card-body">
+        <h1 class="text-center mb-4">Create New Project</h1>
+        <form action="/projects" method="POST" class="validated-form" novalidate>
+          <div class="mb-3">
+            <label class="form-label" for="projectName">Project Name</label>
+            <input class="form-control" type="text" id="projectName" name="project[projectName]" required>
+            <div class="invalid-feedback">
+              Project name is required
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" id="description" name="project[description]" rows="3" required></textarea>
+            <div class="invalid-feedback">
+              Description is required
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label" for="deadline">Deadline</label>
+            <input class="form-control" type="date" id="deadline" name="project[deadline]" required>
+            <div class="invalid-feedback">
+              Deadline is required
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label" for="status">Status</label>
+            <select class="form-select" id="status" name="project[status]" required>
+              <option value="Not Started">Not Started</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+            <div class="invalid-feedback">
+              Status is required
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label" for="teamMembers">Team Members (comma-separated)</label>
+            <input class="form-control" type="text" id="teamMembers" name="project[teamMembers]" placeholder="John Doe, Jane Smith" required>
+            <div class="invalid-feedback">
+              At least one team member is required
+            </div>
+          </div>
+          
+          <div class="d-grid">
+            <button class="btn btn-success">Create Project</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
